@@ -52,7 +52,7 @@
         }
 
         p.subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px auto; }
-        .cta-button { display: inline-block; background-color: var(--accent); color: #0f172a; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; cursor: pointer; border: none; width: 100%; font-size: 1rem; }
+        .cta-button { display: inline-block; background-color: var(--accent); color: #0f172a; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; cursor: pointer; border: none; width: 100%; font-size: 1rem; text-align: center; margin-bottom: 10px; }
         .cta-button:hover { opacity: 0.9; }
         
         section { margin-bottom: 50px; }
@@ -113,27 +113,26 @@
         <section>
             <h2>Start a Project With Us</h2>
             <div class="form-card">
-                <form onsubmit="handleSubmit(event)">
-                    <div class="form-group">
-                        <label for="client-name">Your Name</label>
-                        <input type="text" id="client-name" class="form-control" placeholder="e.g. John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="client-country">Your Country</label>
-                        <input type="text" id="client-country" class="form-control" placeholder="e.g. Nigeria, United States, UK" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-needed">What do you want to hire us for?</label>
-                        <select id="service-needed" class="form-control" required>
-                            <option value="" disabled selected>Select a service</option>
-                            <option value="Website Development">Website Development</option>
-                            <option value="Mobile/Web App">Custom Web/Mobile App</option>
-                            <option value="UI/UX Design">UI/UX Design</option>
-                            <option value="Other Tech Project">Other Tech Project</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="cta-button">Submit Inquiry via WhatsApp</button>
-                </form>
+                <div class="form-group">
+                    <label for="client-name">Your Name</label>
+                    <input type="text" id="client-name" class="form-control" placeholder="e.g. John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="client-country">Your Country</label>
+                    <input type="text" id="client-country" class="form-control" placeholder="e.g. Nigeria, United States, UK">
+                </div>
+                <div class="form-group">
+                    <label for="service-needed">What do you want to hire us for?</label>
+                    <select id="service-needed" class="form-control">
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="Mobile/Web App">Custom Web/Mobile App</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Other Tech Project">Other Tech Project</option>
+                    </select>
+                </div>
+                <button type="button" onclick="submitViaWhatsApp()" class="cta-button">Send Inquiry via WhatsApp</button>
+                <button type="button" onclick="submitViaEmail()" class="cta-button" style="background-color: transparent; border: 1px solid var(--accent); color: var(--accent);">Send Inquiry via Email</button>
             </div>
         </section>
 
@@ -188,17 +187,35 @@
             }
         }
 
-        // Form Submission to WhatsApp
-        function handleSubmit(event) {
-            event.preventDefault();
+        // Form submission actions
+        function getFormData() {
             const name = document.getElementById('client-name').value;
             const country = document.getElementById('client-country').value;
             const service = document.getElementById('service-needed').value;
 
-            const message = `Hello Origin Spark Labs, my name is ${name} from ${country}. I would like to hire you for: ${service}.`;
-            const encodedMessage = encodeURIComponent(message);
+            if (!name || !country || !service) {
+                alert('Please fill out all fields before submitting.');
+                return null;
+            }
+            return { name, country, service };
+        }
+
+        function submitViaWhatsApp() {
+            const data = getFormData();
+            if (!data) return;
+
+            const message = `Hello Origin Spark Labs, my name is ${data.name} from ${data.country}. I would like to hire you for: ${data.service}.`;
+            window.open(`https://wa.me/2348120829956?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function submitViaEmail() {
+            const data = getFormData();
+            if (!data) return;
+
+            const subject = `New Project Inquiry: ${data.service} (${data.name})`;
+            const body = `Hello Origin Spark Labs,\n\nMy name is ${data.name} from ${data.country}.\nI would like to hire you for: ${data.service}.\n\nLooking forward to hearing from you.`;
             
-            window.open(`https://wa.me/2348120829956?text=${encodedMessage}`, '_blank');
+            window.location.href = `mailto:originsparklabs@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
     </script>
 </body>
