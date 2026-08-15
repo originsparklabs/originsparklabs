@@ -52,7 +52,7 @@
         }
 
         p.subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px auto; }
-        .cta-button { display: inline-block; background-color: var(--accent); color: #0f172a; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+        .cta-button { display: inline-block; background-color: var(--accent); color: #0f172a; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; cursor: pointer; border: none; width: 100%; font-size: 1rem; }
         .cta-button:hover { opacity: 0.9; }
         
         section { margin-bottom: 50px; }
@@ -62,8 +62,23 @@
         .card h3 { color: var(--accent); margin-bottom: 10px; }
         .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
         
+        /* Form Styling */
+        .form-card { background-color: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 12px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+        .form-control { width: 100%; padding: 12px; background-color: var(--bg-color); border: 1px solid var(--border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; }
+        .form-control:focus { border-color: var(--accent); }
+
+        /* Contact Cards */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        .contact-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; text-align: center; text-decoration: none; color: var(--text-main); display: block; transition: border-color 0.2s; }
+        .contact-card:hover { border-color: var(--accent); }
+        .contact-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 5px; }
+        .contact-card p { color: var(--text-muted); font-size: 0.9rem; }
+
         /* Game Styles */
-        #game-box { width: 100%; height: 200px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-top: 15px; user-select: none; font-weight: bold; }
+        .score-board { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: 600; }
+        #game-box { width: 100%; height: 200px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; font-weight: bold; }
         .waiting { background-color: #ef4444 !important; }
         .ready { background-color: #22c55e !important; color: #0f172a; }
         footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
@@ -76,7 +91,7 @@
             <div class="badge">Origin Spark Labs</div>
             <h1>We Build Digital Solutions That Scale</h1>
             <p class="subtitle">Custom websites, high-performance web apps, and modern digital experiences.</p>
-            <a href="mailto:contact@originsparklabs.com" class="cta-button">Start a Project</a>
+            <a href="https://wa.me/2348120829956" class="cta-button" style="display:inline-block; width:auto;">Chat on WhatsApp</a>
         </header>
 
         <section>
@@ -84,7 +99,8 @@
             <div class="grid">
                 <div class="card">
                     <h3>Reaction Speed Test</h3>
-                    <p>Test your gamer reflexes. Built with custom JavaScript to demonstrate interactive UI development.</p>
+                    <p>Test your reflexes. Built with custom JavaScript to show interactive UI capabilities.</p>
+                    <div class="score-board">Best Time: <span id="best-time">--</span></div>
                     <div id="game-box" onclick="handleGameClick()">Click to Start</div>
                 </div>
                 <div class="card">
@@ -94,17 +110,66 @@
             </div>
         </section>
 
+        <section>
+            <h2>Start a Project With Us</h2>
+            <div class="form-card">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="client-name">Your Name</label>
+                        <input type="text" id="client-name" class="form-control" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-country">Your Country</label>
+                        <input type="text" id="client-country" class="form-control" placeholder="e.g. Nigeria, United States, UK" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-needed">What do you want to hire us for?</label>
+                        <select id="service-needed" class="form-control" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="Website Development">Website Development</option>
+                            <option value="Mobile/Web App">Custom Web/Mobile App</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Other Tech Project">Other Tech Project</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cta-button">Submit Inquiry via WhatsApp</button>
+                </form>
+            </div>
+        </section>
+
+        <section>
+            <h2>Get In Touch Directly</h2>
+            <div class="contact-grid">
+                <a href="https://wa.me/2348120829956" class="contact-card" target="_blank">
+                    <h3>WhatsApp</h3>
+                    <p>0812 082 9956</p>
+                </a>
+                <a href="mailto:originsparklabs@gmail.com" class="contact-card">
+                    <h3>Email</h3>
+                    <p>originsparklabs@gmail.com</p>
+                </a>
+            </div>
+        </section>
+
         <footer>&copy; 2026 Origin Spark Labs. All rights reserved.</footer>
     </div>
 
     <script>
-        let startTime, timeout;
+        // Reaction Game Logic
+        let startTime, timeout, bestTime = null;
         const box = document.getElementById('game-box');
+        const bestTimeDisplay = document.getElementById('best-time');
 
         function handleGameClick() {
             if (box.classList.contains('ready')) {
-                const endTime = new Date().getTime();
-                alert('Reaction time: ' + (endTime - startTime) + 'ms! Nice speed.');
+                const reactionTime = new Date().getTime() - startTime;
+                
+                if (bestTime === null || reactionTime < bestTime) {
+                    bestTime = reactionTime;
+                    bestTimeDisplay.innerText = bestTime + ' ms';
+                }
+
+                alert('Reaction time: ' + reactionTime + 'ms!');
                 box.innerText = 'Click to Start';
                 box.className = '';
             } else if (box.classList.contains('waiting')) {
@@ -121,6 +186,19 @@
                     startTime = new Date().getTime();
                 }, Math.random() * 2000 + 1000);
             }
+        }
+
+        // Form Submission to WhatsApp
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('client-name').value;
+            const country = document.getElementById('client-country').value;
+            const service = document.getElementById('service-needed').value;
+
+            const message = `Hello Origin Spark Labs, my name is ${name} from ${country}. I would like to hire you for: ${service}.`;
+            const encodedMessage = encodeURIComponent(message);
+            
+            window.open(`https://wa.me/2348120829956?text=${encodedMessage}`, '_blank');
         }
     </script>
 </body>
