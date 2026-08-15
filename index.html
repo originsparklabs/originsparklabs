@@ -51,7 +51,23 @@
             }
         }
 
-        p.subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px auto; }
+        p.subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 20px auto; }
+        
+        /* Agency Speech / Tagline Box */
+        .speech-box {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(17, 24, 39, 0.8));
+            border-left: 3px solid var(--accent);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: left;
+            font-style: italic;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
         .cta-button { display: inline-block; background-color: var(--accent); color: #0f172a; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; cursor: pointer; border: none; width: 100%; font-size: 1rem; text-align: center; margin-bottom: 10px; }
         .cta-button:hover { opacity: 0.9; }
         
@@ -69,13 +85,6 @@
         .form-control { width: 100%; padding: 12px; background-color: var(--bg-color); border: 1px solid var(--border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; }
         .form-control:focus { border-color: var(--accent); }
 
-        /* Contact Cards */
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .contact-card { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; text-align: center; text-decoration: none; color: var(--text-main); display: block; transition: border-color 0.2s; }
-        .contact-card:hover { border-color: var(--accent); }
-        .contact-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 5px; }
-        .contact-card p { color: var(--text-muted); font-size: 0.9rem; }
-
         /* Game Styles */
         .score-board { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: 600; }
         #game-box { width: 100%; height: 200px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; font-weight: bold; }
@@ -91,7 +100,11 @@
             <div class="badge">Origin Spark Labs</div>
             <h1>We Build Digital Solutions That Scale</h1>
             <p class="subtitle">Custom websites, high-performance web apps, and modern digital experiences.</p>
-            <a href="https://wa.me/2348120829956" class="cta-button" style="display:inline-block; width:auto;">Chat on WhatsApp</a>
+            
+            <!-- Agency Mission Speech -->
+            <div class="speech-box">
+                "We don't just write code; we engineer digital ecosystems that turn curious visitors into loyal clients. Wherever you are in the world, your vision is our blueprint."
+            </div>
         </header>
 
         <section>
@@ -136,20 +149,6 @@
             </div>
         </section>
 
-        <section>
-            <h2>Get In Touch Directly</h2>
-            <div class="contact-grid">
-                <a href="https://wa.me/2348120829956" class="contact-card" target="_blank">
-                    <h3>WhatsApp</h3>
-                    <p>0812 082 9956</p>
-                </a>
-                <a href="mailto:originsparklabs@gmail.com" class="contact-card">
-                    <h3>Email</h3>
-                    <p>originsparklabs@gmail.com</p>
-                </a>
-            </div>
-        </section>
-
         <footer>&copy; 2026 Origin Spark Labs. All rights reserved.</footer>
     </div>
 
@@ -187,7 +186,7 @@
             }
         }
 
-        // Form submission actions
+        // Form submission actions securely routing behind the scenes
         function getFormData() {
             const name = document.getElementById('client-name').value;
             const country = document.getElementById('client-country').value;
