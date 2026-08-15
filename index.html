@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Spark Labs | Mobile Development & Tech Solutions</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --spark-orange: #ff7b72;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .logo-container {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo-container span {
+            color: var(--spark-orange);
+        }
+
+        tagline {
+            display: block;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-badge {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #238636;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #2ea043;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 40px;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                ⚡ Origin Spark <span>Labs</span>
+            </div>
+            <tagline>Mobile-First Web Development & Clean Code Solutions</tagline>
+        </header>
+
+        <section>
+            <h2>About Us</h2>
+            <p>Welcome to Origin Spark Labs. We build high-performance, responsive websites and modern digital solutions from scratch. Fast delivery, clean code, and elite dark-themed designs tailored to bring your vision to life.</p>
+        </section>
+
+        <section>
+            <h2>Our Tech Stack</h2>
+            <p>We leverage modern web standards to ensure your platform is lightweight, mobile-optimized, and lightning-fast.</p>
+            <div class="skills-grid">
+                <div class="skill-badge">HTML5 / CSS3</div>
+                <div class="skill-badge">JavaScript</div>
+                <div class="skill-badge">Responsive Design</div>
+                <div class="skill-badge">Mobile Optimization</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Start a Project</h2>
+            <p>Ready to build your web presence or launch your next app idea? Get in touch with us directly to discuss your project requirements.</p>
+            <div class="cta-container">
+                <a href="https://wa.me/" class="btn btn-whatsapp" target="_blank">Chat on WhatsApp</a>
+                <a href="mailto:Originsparklabs@gmail.com" class="btn">Send an Email</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Origin Spark Labs. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
