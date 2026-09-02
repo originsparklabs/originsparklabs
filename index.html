@@ -3,57 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin Spark Labs | Tech & Interactive Apps</title>
+    <title>Origin Spark Labs | Software & Innovation Studio</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #111827;
+            --bg: #0b0f19;
+            --surface: #111827;
             --accent: #38bdf8;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border: #1f2937;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; margin-bottom: 50px; }
-        
-        /* Glowing Logo / Badge Effect */
-        .badge {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.2);
-            animation: pulseGlow 2.5s infinite alternate;
         }
 
-        /* Glowing Heading Effect */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        @keyframes pulseGlow {
-            0% {
-                box-shadow: 0 0 10px rgba(56, 189, 248, 0.3), inset 0 0 5px rgba(56, 189, 248, 0.1);
-            }
-            100% {
-                box-shadow: 0 0 25px rgba(56, 189, 248, 0.7), inset 0 0 12px rgba(56, 189, 248, 0.4);
-            }
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
         }
 
-        p.subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 20px auto; }
-        
-        /* Agency Speech / Tagline Box */
         .speech-box {
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(17, 24, 39, 0.8));
             border-left: 3px solid var(--accent);
@@ -68,154 +64,209 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .cta-button { display: inline-block; background-color: var(--accent); color: #0f172a; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; cursor: pointer; border: none; width: 100%; font-size: 1rem; text-align: center; margin-bottom: 10px; }
-        .cta-button:hover { opacity: 0.9; }
-        
-        section { margin-bottom: 50px; }
-        h2 { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .card { background-color: var(--card-bg); border: 1px solid var(--border); padding: 25px; border-radius: 12px; }
-        .card h3 { color: var(--accent); margin-bottom: 10px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
-        
-        /* Form Styling */
-        .form-card { background-color: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 12px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
-        .form-control { width: 100%; padding: 12px; background-color: var(--bg-color); border: 1px solid var(--border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; }
-        .form-control:focus { border-color: var(--accent); }
+        .section-title {
+            font-size: 1.5rem;
+            margin: 40px 0 20px 0;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
 
-        /* Game Styles */
-        .score-board { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; font-weight: 600; }
-        #game-box { width: 100%; height: 200px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; font-weight: bold; }
-        .waiting { background-color: #ef4444 !important; }
-        .ready { background-color: #22c55e !important; color: #0f172a; }
-        footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .tag:hover {
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        .form-group {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 14px;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <div class="badge">Origin Spark Labs</div>
-            <h1>We Build Digital Solutions That Scale</h1>
-            <p class="subtitle">Custom websites, high-performance web apps, and modern digital experiences.</p>
-            
-            <!-- Agency Mission Speech -->
-            <div class="speech-box">
-                "We don't just write code; we engineer digital ecosystems that turn curious visitors into loyal clients. Wherever you are in the world, your vision is our blueprint."
-            </div>
-        </header>
+        <h1>Origin Spark Labs</h1>
+        <p class="subtitle">Building the future of software, one clean line of code at a time.</p>
+        
+        <div class="speech-box">
+            "At Origin Spark Labs, we craft high-performance web and mobile experiences designed to stand out and solve real problems."
+        </div>
 
-        <section>
-            <h2>Featured Projects</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Reaction Speed Test</h3>
-                    <p>Test your reflexes. Built with custom JavaScript to show interactive UI capabilities.</p>
-                    <div class="score-board">Best Time: <span id="best-time">--</span></div>
-                    <div id="game-box" onclick="handleGameClick()">Click to Start</div>
-                </div>
-                <div class="card">
-                    <h3>Startup Portfolio</h3>
-                    <p>A professional, mobile-first agency landing page designed for maximum conversion.</p>
+        <h2 class="section-title">Core Toolkit</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Frontend Architecture</h3>
+                <p>Writing semantic HTML, modern CSS custom properties, and dynamic JavaScript interfaces.</p>
+                <div class="tech-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <h2>Start a Project With Us</h2>
-            <div class="form-card">
-                <div class="form-group">
-                    <label for="client-name">Your Name</label>
-                    <input type="text" id="client-name" class="form-control" placeholder="e.g. John Doe">
+            <div class="card">
+                <h3>Mobile & Cross-Platform</h3>
+                <p>Building high-performance applications with clean architecture and smooth UI.</p>
+                <div class="tech-tags">
+                    <span class="tag">Flutter</span>
+                    <span class="tag">Dart</span>
                 </div>
-                <div class="form-group">
-                    <label for="client-country">Your Country</label>
-                    <input type="text" id="client-country" class="form-control" placeholder="e.g. Nigeria, United States, UK">
-                </div>
-                <div class="form-group">
-                    <label for="service-needed">What do you want to hire us for?</label>
-                    <select id="service-needed" class="form-control">
-                        <option value="" disabled selected>Select a service</option>
-                        <option value="Website Development">Website Development</option>
-                        <option value="Mobile/Web App">Custom Web/Mobile App</option>
-                        <option value="UI/UX Design">UI/UX Design</option>
-                        <option value="Other Tech Project">Other Tech Project</option>
-                    </select>
-                </div>
-                <button type="button" onclick="submitViaWhatsApp()" class="cta-button">Send Inquiry via WhatsApp</button>
-                <button type="button" onclick="submitViaEmail()" class="cta-button" style="background-color: transparent; border: 1px solid var(--accent); color: var(--accent);">Send Inquiry via Email</button>
             </div>
-        </section>
+            <div class="card">
+                <h3>Version Control</h3>
+                <p>Managing deployments, branching workflows, and open-source collaboration.</p>
+                <div class="tech-tags">
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub Pages</span>
+                </div>
+            </div>
+        </div>
 
-        <footer>&copy; 2026 Origin Spark Labs. All rights reserved.</footer>
+        <h2 class="section-title">Active Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Labs Portfolio v1</h3>
+                <p>Our official digital headquarters, built completely from scratch with a custom design system.</p>
+                <div class="tech-tags">
+                    <span class="tag">v1.0 Live</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Mobile Concept App</h3>
+                <p>An upcoming utility application designed for speed, clean UX, and seamless interaction.</p>
+                <div class="tech-tags">
+                    <span class="tag">Flutter</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Collaborate</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>WhatsApp Channel</h3>
+                <p>Send an instant brief directly to our workspace via WhatsApp.</p>
+                <form id="wa-form" class="form-group">
+                    <input type="text" id="wa-name" class="form-input" placeholder="Your Name" required>
+                    <textarea id="wa-msg" class="form-input" placeholder="Project details..." required></textarea>
+                    <button type="submit" class="submit-btn">Send via WhatsApp</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Email Dispatch</h3>
+                <p>Send a structured studio brief straight to our lab inbox.</p>
+                <form id="email-form" class="form-group">
+                    <input type="text" id="email-name" class="form-input" placeholder="Your Name" required>
+                    <textarea id="email-msg" class="form-input" placeholder="Project details..." required></textarea>
+                    <button type="submit" class="submit-btn">Send via Email</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Reaction Game Logic
-        let startTime, timeout, bestTime = null;
-        const box = document.getElementById('game-box');
-        const bestTimeDisplay = document.getElementById('best-time');
+        document.getElementById('wa-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('wa-name').value;
+            const msg = document.getElementById('wa-msg').value;
+            const text = encodeURIComponent(`Hello Origin Spark Labs, my name is ${name}. ${msg}`);
+            window.open(`https://wa.me/2348120829956?text=${text}`, '_blank');
+        });
 
-        function handleGameClick() {
-            if (box.classList.contains('ready')) {
-                const reactionTime = new Date().getTime() - startTime;
-                
-                if (bestTime === null || reactionTime < bestTime) {
-                    bestTime = reactionTime;
-                    bestTimeDisplay.innerText = bestTime + ' ms';
-                }
-
-                alert('Reaction time: ' + reactionTime + 'ms!');
-                box.innerText = 'Click to Start';
-                box.className = '';
-            } else if (box.classList.contains('waiting')) {
-                clearTimeout(timeout);
-                alert('Too soon! Wait for green.');
-                box.innerText = 'Click to Start';
-                box.className = '';
-            } else {
-                box.innerText = 'Wait for green...';
-                box.className = 'waiting';
-                timeout = setTimeout(() => {
-                    box.innerText = 'CLICK NOW!';
-                    box.className = 'ready';
-                    startTime = new Date().getTime();
-                }, Math.random() * 2000 + 1000);
-            }
-        }
-
-        // Form submission actions securely routing behind the scenes
-        function getFormData() {
-            const name = document.getElementById('client-name').value;
-            const country = document.getElementById('client-country').value;
-            const service = document.getElementById('service-needed').value;
-
-            if (!name || !country || !service) {
-                alert('Please fill out all fields before submitting.');
-                return null;
-            }
-            return { name, country, service };
-        }
-
-        function submitViaWhatsApp() {
-            const data = getFormData();
-            if (!data) return;
-
-            const message = `Hello Origin Spark Labs, my name is ${data.name} from ${data.country}. I would like to hire you for: ${data.service}.`;
-            window.open(`https://wa.me/2348120829956?text=${encodeURIComponent(message)}`, '_blank');
-        }
-
-        function submitViaEmail() {
-            const data = getFormData();
-            if (!data) return;
-
-            const subject = `New Project Inquiry: ${data.service} (${data.name})`;
-            const body = `Hello Origin Spark Labs,\n\nMy name is ${data.name} from ${data.country}.\nI would like to hire you for: ${data.service}.\n\nLooking forward to hearing from you.`;
-            
-            window.location.href = `mailto:originsparklabs@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
+        document.getElementById('email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('email-name').value;
+            const msg = document.getElementById('email-msg').value;
+            const subject = encodeURIComponent(`Project Enquiry from ${name}`);
+            const body = encodeURIComponent(`Hello Origin Spark Labs,\n\n${msg}\n\nFrom: ${name}`);
+            window.location.href = `mailto:originsparklabs@gmail.com?subject=${subject}&body=${body}`;
+        });
     </script>
 </body>
 </html>
