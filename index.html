@@ -161,7 +161,7 @@
         }
 
         /* =========================
-           TOP SYSTEM BAR
+           TOP SYSTEM BAR (FEATURE 2: LIVE CLOCK & STATUS)
         ========================== */
 
         .system-bar {
@@ -171,7 +171,7 @@
         }
 
         .system-inner {
-            min-height: 36px;
+            min-height: 38px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -179,6 +179,7 @@
             color: var(--muted-2);
             font-size: .72rem;
             letter-spacing: .8px;
+            flex-wrap: wrap;
         }
 
         .system-status {
@@ -195,6 +196,34 @@
             border-radius: 50%;
             box-shadow: 0 0 12px var(--green);
             animation: pulse 2s infinite;
+        }
+
+        .system-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .live-clock {
+            color: var(--blue);
+            font-family: "Orbitron", sans-serif;
+            font-size: .7rem;
+        }
+
+        .sfx-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: .65rem;
+            transition: .2s;
+        }
+
+        .sfx-toggle:hover {
+            color: var(--blue);
+            border-color: var(--border-blue);
         }
 
         @keyframes pulse {
@@ -477,7 +506,7 @@
         }
 
         /* =========================
-           CARDS
+           CARDS & GRID
         ========================== */
 
         .grid {
@@ -560,1451 +589,670 @@
         }
 
         /* =========================
-           PROJECTS
+           FEATURE 3: PROJECT SCOPE ESTIMATOR
         ========================== */
 
-        .project-card {
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-            display: block;
-            filter: saturate(.8);
-            transition: .35s;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.025);
-            filter: saturate(1);
-        }
-
-        .project-content {
-            padding: 22px;
-        }
-
-        .project-label {
-            color: var(--green);
-            font-size: .68rem;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .project-link {
-            display: inline-flex;
-            margin-top: 18px;
-            color: var(--blue);
-            background: none;
-            border: 0;
-            cursor: pointer;
-            font-size: .75rem;
-            font-weight: bold;
-        }
-
-        /* =========================
-           SERVICES
-        ========================== */
-
-        .service-card {
-            min-height: 260px;
-        }
-
-        .service-number {
-            color: var(--muted-2);
-            font-family: "Orbitron", sans-serif;
-            font-size: .72rem;
-            margin-bottom: 25px;
-        }
-
-        .service-price {
-            color: var(--green);
-            margin-top: 18px;
-            font-size: .76rem;
-        }
-
-        /* =========================
-           ABOUT
-        ========================== */
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-        }
-
-        .about-panel {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-        }
-
-        .about-panel h3 {
-            font-family: "Orbitron", sans-serif;
-            font-size: 1.05rem;
-            margin-bottom: 14px;
-        }
-
-        .about-panel p {
-            color: var(--muted);
-            font-size: .85rem;
-            line-height: 1.8;
-        }
-
-        .principles {
-            margin-top: 25px;
-            display: grid;
-            gap: 10px;
-        }
-
-        .principle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--muted);
-            font-size: .8rem;
-        }
-
-        .principle::before {
-            content: "✓";
-            color: var(--green);
-        }
-
-        /* =========================
-           CONTACT
-        ========================== */
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 22px;
-        }
-
-        .contact-info {
-            background:
-                linear-gradient(145deg, rgba(56,189,248,.08), rgba(129,140,248,.04)),
-                var(--glass);
+        .estimator-box {
+            margin-top: 40px;
+            background: var(--surface);
             border: 1px solid var(--border-blue);
             border-radius: var(--radius);
             padding: 30px;
         }
 
-        .contact-info h3 {
-            font-family: "Orbitron", sans-serif;
-            margin-bottom: 12px;
-        }
-
-        .contact-info p {
-            color: var(--muted);
-            font-size: .83rem;
-        }
-
-        .private-contact {
-            margin-top: 25px;
-            padding: 14px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: rgba(0,0,0,.18);
-            color: var(--muted);
-            font-size: .72rem;
-        }
-
-        .private-contact strong {
-            display: block;
-            color: var(--green);
-            margin-bottom: 4px;
-        }
-
-        .contact-form {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-        }
-
-        .form-grid {
+        .estimator-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 25px;
+            margin-top: 20px;
         }
 
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            margin-bottom: 14px;
-        }
-
-        .field.full {
-            grid-column: 1 / -1;
-        }
-
-        .field label {
+        .estimator-group label {
+            display: block;
             color: var(--muted);
-            font-size: .7rem;
+            font-size: .75rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .input,
-        .select,
-        .textarea {
-            width: 100%;
-            background: #080e19;
+        .estimator-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .opt-btn {
+            background: var(--surface-2);
             border: 1px solid var(--border);
-            border-radius: 9px;
-            color: var(--text);
-            padding: 12px 13px;
-            outline: none;
+            color: var(--muted);
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: .78rem;
+            text-align: left;
             transition: .2s;
         }
 
-        .textarea {
-            min-height: 125px;
-            resize: vertical;
-        }
-
-        .input:focus,
-        .select:focus,
-        .textarea:focus {
+        .opt-btn.active {
+            background: rgba(56,189,248,.1);
             border-color: var(--blue);
-            box-shadow: 0 0 0 3px rgba(56,189,248,.06);
-        }
-
-        .select option {
-            background: #0b1220;
-        }
-
-        .form-note {
-            color: var(--muted-2);
-            font-size: .67rem;
-            margin-top: 12px;
-        }
-
-        /* =========================
-           POMODORO
-        ========================== */
-
-        .pomodoro {
-            max-width: 650px;
-            margin-top: 35px;
-            background: linear-gradient(145deg, #0e1727, #070c15);
-            border: 1px solid var(--border-blue);
-            border-radius: 18px;
-            padding: 25px;
-        }
-
-        .pomodoro-top {
-            text-align: center;
-            margin-bottom: 22px;
-        }
-
-        .pomodoro-top h3 {
-            font-family: "Orbitron", sans-serif;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .pomodoro-top p {
-            color: var(--muted-2);
-            font-size: .7rem;
-        }
-
-        .modes {
-            display: flex;
-            gap: 5px;
-            padding: 4px;
-            background: rgba(0,0,0,.3);
-            border-radius: 9px;
-            margin-bottom: 20px;
-        }
-
-        .mode-btn {
-            flex: 1;
-            border: 0;
-            border-radius: 6px;
-            padding: 9px 5px;
-            background: transparent;
-            color: var(--muted);
-            cursor: pointer;
-            font-size: .7rem;
-        }
-
-        .mode-btn.active {
-            background: var(--blue);
-            color: #001018;
+            color: var(--blue);
             font-weight: bold;
         }
 
-        .timer {
-            text-align: center;
+        .estimator-output {
+            background: #060913;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .output-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: .82rem;
+        }
+
+        .output-row span:last-child {
             font-family: "Orbitron", sans-serif;
-            font-size: clamp(3rem, 10vw, 5rem);
-            line-height: 1;
-            margin: 28px 0;
-            text-shadow: 0 0 30px rgba(56,189,248,.2);
+            color: var(--blue);
         }
 
-        .timer-stats {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            color: var(--green);
-            font-size: .7rem;
-            margin-bottom: 20px;
+        /* =========================
+           PLAYGROUND & TESTIMONIALS
+        ========================== */
+
+        .playground-box {
+            margin-top: 50px;
+            background: var(--surface);
+            border: 1px solid var(--border-blue);
+            border-radius: var(--radius);
+            padding: 25px;
         }
 
-        .timer-controls {
+        .playground-top {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        /* =========================
-           TOAST
-        ========================== */
-
-        #toast-container {
-            position: fixed;
-            right: 18px;
-            bottom: 18px;
-            z-index: 9999;
-            display: grid;
-            gap: 9px;
+        .playground-actions {
+            display: flex;
+            gap: 8px;
         }
 
-        .toast {
-            max-width: 320px;
-            padding: 13px 16px;
-            border-radius: 9px;
-            background: #101827;
-            border: 1px solid var(--border-blue);
-            border-left: 3px solid var(--green);
-            color: var(--text);
+        .playground-btn {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
             font-size: .75rem;
-            box-shadow: var(--shadow);
-            animation: toastIn .25s ease;
+            transition: .2s;
         }
 
-        .toast.error {
-            border-left-color: var(--pink);
+        .playground-btn.active,
+        .playground-btn:hover {
+            background: var(--blue);
+            color: #001018;
+            border-color: var(--blue);
+            font-weight: bold;
         }
 
-        @keyframes toastIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .playground-canvas {
+            min-height: 140px;
+            border-radius: 12px;
+            background: #04060b;
+            border: 1px solid var(--border);
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            transition: all 0.4s ease;
         }
 
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 28px 0 35px;
+        .playground-preview-text {
+            font-family: "Orbitron", sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
         }
 
-        .footer-inner {
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-text {
+            color: var(--muted);
+            font-size: .85rem;
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 20px;
+            gap: 12px;
         }
 
-        .footer-brand {
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(56,189,248,.12);
+            border: 1px solid var(--border-blue);
+            display: grid;
+            place-items: center;
             font-family: "Orbitron", sans-serif;
             font-size: .8rem;
             color: var(--blue);
         }
 
-        .footer-copy {
+        .author-info strong {
+            display: block;
+            font-size: .8rem;
+            font-family: "Orbitron", sans-serif;
+        }
+
+        .author-info span {
             color: var(--muted-2);
-            font-size: .68rem;
+            font-size: .7rem;
         }
 
-        .footer-nav {
-            display: flex;
-            gap: 12px;
-        }
+        /* PROJECTS & SERVICES & ABOUT & CONTACT */
+        .project-card { padding: 0; overflow: hidden; }
+        .project-image { width: 100%; height: 190px; object-fit: cover; display: block; filter: saturate(.8); transition: .35s; }
+        .project-card:hover .project-image { transform: scale(1.025); filter: saturate(1); }
+        .project-content { padding: 22px; }
+        .project-label { color: var(--green); font-size: .68rem; letter-spacing: 1px; margin-bottom: 8px; }
+        .project-link { display: inline-flex; margin-top: 18px; color: var(--blue); background: none; border: 0; cursor: pointer; font-size: .75rem; font-weight: bold; }
 
-        .footer-nav button {
-            background: none;
-            border: 0;
-            color: var(--muted);
-            cursor: pointer;
-            font-size: .68rem;
-        }
+        .service-card { min-height: 260px; }
+        .service-number { color: var(--muted-2); font-family: "Orbitron", sans-serif; font-size: .72rem; margin-bottom: 25px; }
+        .service-price { color: var(--green); margin-top: 18px; font-size: .76rem; }
 
-        .footer-nav button:hover {
-            color: var(--blue);
-        }
+        .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        .about-panel { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; }
+        .about-panel h3 { font-family: "Orbitron", sans-serif; font-size: 1.05rem; margin-bottom: 14px; }
+        .about-panel p { color: var(--muted); font-size: .85rem; line-height: 1.8; }
+        .principles { margin-top: 25px; display: grid; gap: 10px; }
+        .principle { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: .8rem; }
+        .principle::before { content: "✓"; color: var(--green); }
 
-        /* =========================
-           FOCUS / ACCESSIBILITY
-        ========================== */
+        .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; }
+        .contact-info { background: linear-gradient(145deg, rgba(56,189,248,.08), rgba(129,140,248,.04)), var(--glass); border: 1px solid var(--border-blue); border-radius: var(--radius); padding: 30px; }
+        .contact-info h3 { font-family: "Orbitron", sans-serif; margin-bottom: 12px; }
+        .contact-info p { color: var(--muted); font-size: .83rem; }
+        .private-contact { margin-top: 25px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: rgba(0,0,0,.18); color: var(--muted); font-size: .72rem; }
+        .private-contact strong { display: block; color: var(--green); margin-bottom: 4px; }
+        .contact-form { background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+        .field.full { grid-column: 1 / -1; }
+        .field label { color: var(--muted); font-size: .7rem; }
+        .input, .select, .textarea { width: 100%; background: #080e19; border: 1px solid var(--border); border-radius: 9px; color: var(--text); padding: 12px 13px; outline: none; transition: .2s; }
+        .textarea { min-height: 125px; resize: vertical; }
+        .input:focus, .select:focus, .textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(56,189,248,.06); }
+        .select option { background: #0b1220; }
+        .form-note { color: var(--muted-2); font-size: .67rem; margin-top: 12px; }
 
-        button:focus-visible,
-        a:focus-visible,
-        input:focus-visible,
-        select:focus-visible,
-        textarea:focus-visible {
-            outline: 2px solid var(--blue);
-            outline-offset: 3px;
-        }
+        /* Pomodoro */
+        .pomodoro { max-width: 650px; margin-top: 35px; background: linear-gradient(145deg, #0e1727, #070c15); border: 1px solid var(--border-blue); border-radius: 18px; padding: 25px; }
+        .pomodoro-top { text-align: center; margin-bottom: 22px; }
+        .pomodoro-top h3 { font-family: "Orbitron", sans-serif; font-size: 1rem; margin-bottom: 4px; }
+        .pomodoro-top p { color: var(--muted-2); font-size: .7rem; }
+        .modes { display: flex; gap: 5px; padding: 4px; background: rgba(0,0,0,.3); border-radius: 9px; margin-bottom: 20px; }
+        .mode-btn { flex: 1; border: 0; border-radius: 6px; padding: 9px 5px; background: transparent; color: var(--muted); cursor: pointer; font-size: .7rem; }
+        .mode-btn.active { background: var(--blue); color: #001018; font-weight: bold; }
+        .timer { text-align: center; font-family: "Orbitron", sans-serif; font-size: clamp(3rem, 10vw, 5rem); line-height: 1; margin: 28px 0; text-shadow: 0 0 30px rgba(56,189,248,.2); }
+        .timer-stats { display: flex; justify-content: center; gap: 25px; color: var(--green); font-size: .7rem; margin-bottom: 20px; }
+        .timer-controls { display: flex; gap: 10px; }
 
-        /* =========================
-           MOBILE
-        ========================== */
+        /* Toast */
+        #toast-container { position: fixed; right: 18px; bottom: 18px; z-index: 9999; display: grid; gap: 9px; }
+        .toast { max-width: 320px; padding: 13px 16px; border-radius: 9px; background: #101827; border: 1px solid var(--border-blue); border-left: 3px solid var(--green); color: var(--text); font-size: .75rem; box-shadow: var(--shadow); animation: toastIn .25s ease; }
+        .toast.error { border-left-color: var(--pink); }
+        @keyframes toastIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+        footer { border-top: 1px solid var(--border); padding: 28px 0 35px; }
+        .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .footer-brand { font-family: "Orbitron", sans-serif; font-size: .8rem; color: var(--blue); }
+        .footer-copy { color: var(--muted-2); font-size: .68rem; }
+        .footer-nav { display: flex; gap: 12px; }
+        .footer-nav button { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: .68rem; }
+        .footer-nav button:hover { color: var(--blue); }
 
         @media (max-width: 850px) {
-
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            .hero-terminal {
-                max-width: 700px;
-            }
-
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-layout,
-            .contact-layout {
-                grid-template-columns: 1fr;
-            }
+            .hero { grid-template-columns: 1fr; gap: 35px; }
+            .hero-terminal { max-width: 700px; }
+            .grid, .testimonials-grid, .estimator-grid { grid-template-columns: 1fr; }
+            .about-layout, .contact-layout { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 680px) {
-
-            .container {
-                width: min(100% - 22px, 1120px);
-            }
-
-            .system-inner {
-                font-size: .62rem;
-            }
-
-            .nav-wrap {
-                top: 7px;
-            }
-
-            nav {
-                padding: 9px 12px;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: calc(100% + 8px);
-                left: 0;
-                right: 0;
-                padding: 10px;
-                flex-direction: column;
-                align-items: stretch;
-                background: #0b1220;
-                border: 1px solid var(--border-blue);
-                border-radius: 12px;
-                box-shadow: var(--shadow);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-btn {
-                width: 100%;
-                text-align: left;
-                padding: 12px;
-            }
-
-            .nav-cta {
-                text-align: center;
-            }
-
-            main {
-                padding-top: 50px;
-            }
-
-            .hero {
-                min-height: auto;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-                margin-bottom: 60px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .field.full {
-                grid-column: auto;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .modes {
-                flex-direction: column;
-            }
-
-            .timer-controls {
-                flex-direction: column;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: .01ms !important;
-                transition-duration: .01ms !important;
-            }
+            .container { width: min(100% - 22px, 1120px); }
+            .system-inner { font-size: .62rem; }
+            .nav-wrap { top: 7px; }
+            nav { padding: 9px 12px; }
+            .menu-btn { display: block; }
+            .nav-links { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; padding: 10px; flex-direction: column; align-items: stretch; background: #0b1220; border: 1px solid var(--border-blue); border-radius: 12px; box-shadow: var(--shadow); }
+            .nav-links.open { display: flex; }
+            .nav-btn { width: 100%; text-align: left; padding: 12px; }
+            .nav-cta { text-align: center; }
+            main { padding-top: 50px; }
+            .hero { min-height: auto; }
+            .hero h1 { font-size: 2.5rem; }
+            .stats, .grid, .testimonials-grid { grid-template-columns: 1fr; margin-bottom: 60px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .field.full { grid-column: auto; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .modes { flex-direction: column; }
+            .timer-controls { flex-direction: column; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         SYSTEM BAR
-    ========================== -->
-
+    <!-- SYSTEM BAR (FEATURE 2: LIVE CLOCK & STATUS) -->
     <div class="system-bar">
         <div class="container system-inner">
             <div class="system-status">
                 <span class="status-dot"></span>
-                <span>SYSTEM ONLINE // SECURE</span>
+                <span>AVAILABLE FOR PROJECTS</span>
             </div>
-
-            <span>ORIGIN // DIGITAL STUDIO</span>
+            <div class="system-meta">
+                <span class="live-clock" id="live-clock">--:--:-- UTC</span>
+                <button class="sfx-toggle" id="sfx-toggle" onclick="toggleSFX()">SFX: OFF</button>
+            </div>
         </div>
     </div>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
-
+    <!-- NAVIGATION -->
     <div class="container nav-wrap">
         <nav aria-label="Main navigation">
-
             <button class="logo" onclick="showPage('home')">
                 ORIGIN <span>SPARK LABS</span>
             </button>
-
-            <button
-                class="menu-btn"
-                id="menu-btn"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                onclick="toggleMenu()">
-                ☰
-            </button>
-
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="nav-links">
-
-                <li>
-                    <button class="nav-btn active" data-page="home"
-                            onclick="showPage('home')">
-                        Home
-                    </button>
-                </li>
-
-                <li>
-                    <button class="nav-btn" data-page="services"
-                            onclick="showPage('services')">
-                        Services
-                    </button>
-                </li>
-
-                <li>
-                    <button class="nav-btn" data-page="projects"
-                            onclick="showPage('projects')">
-                        Projects
-                    </button>
-                </li>
-
-                <li>
-                    <button class="nav-btn" data-page="about"
-                            onclick="showPage('about')">
-                        About
-                    </button>
-                </li>
-
-                <li>
-                    <button class="nav-btn nav-cta"
-                            data-page="contact"
-                            onclick="showPage('contact')">
-                        Start a Project
-                    </button>
-                </li>
-
+                <li><button class="nav-btn active" data-page="home" onclick="showPage('home')">Home</button></li>
+                <li><button class="nav-btn" data-page="services" onclick="showPage('services')">Services</button></li>
+                <li><button class="nav-btn" data-page="projects" onclick="showPage('projects')">Projects</button></li>
+                <li><button class="nav-btn" data-page="about" onclick="showPage('about')">About</button></li>
+                <li><button class="nav-btn nav-cta" data-page="contact" onclick="showPage('contact')">Start a Project</button></li>
             </ul>
         </nav>
     </div>
 
-    <!-- =========================
-         MAIN
-    ========================== -->
-
     <main class="container">
 
-        <!-- =========================
-             HOME
-        ========================== -->
-
+        <!-- HOME -->
         <section class="page active" id="page-home">
-
             <div class="hero">
-
                 <div>
-
-                    <div class="eyebrow">
-                        Software & Digital Innovation Studio
-                    </div>
-
-                    <h1>
-                        We build
-                        <span class="gradient-text">digital products</span>
-                        that move ideas forward.
-                    </h1>
-
-                    <p class="hero-description">
-                        Origin Spark Labs creates modern web experiences,
-                        mobile applications, automation systems, and digital
-                        tools designed around real-world problems.
-                    </p>
-
+                    <div class="eyebrow">Software & Digital Innovation Studio</div>
+                    <h1>We build <span class="gradient-text">digital products</span> that move ideas forward.</h1>
+                    <p class="hero-description">Origin Spark Labs creates modern web experiences, mobile applications, automation systems, and digital tools designed around real-world problems.</p>
                     <div class="hero-actions">
-
-                        <button class="btn btn-primary"
-                                onclick="showPage('projects')">
-                            Explore Projects →
-                        </button>
-
-                        <button class="btn btn-secondary"
-                                onclick="showPage('contact')">
-                            Start a Conversation
-                        </button>
-
+                        <button class="btn btn-primary" onclick="showPage('projects')">Explore Projects →</button>
+                        <button class="btn btn-secondary" onclick="showPage('contact')">Start a Conversation</button>
                     </div>
-
                 </div>
 
                 <div class="hero-terminal">
-
                     <div class="terminal-head">
                         <span class="terminal-dot"></span>
                         <span class="terminal-dot"></span>
                         <span class="terminal-dot"></span>
-
-                        <span class="terminal-title">
-                            origin-studio / build
-                        </span>
+                        <span class="terminal-title">origin-studio / build</span>
                     </div>
-
                     <div class="terminal-body">
-
-                        <div class="code-line">
-                            <span class="code-muted">$</span>
-                            <span class="code-blue">origin</span>
-                            init --project
-                        </div>
-
-                        <div class="code-line">
-                            <span class="code-purple">studio</span>
-                            = "Origin Spark Labs";
-                        </div>
-
+                        <div class="code-line"><span class="code-muted">$</span> <span class="code-blue">origin</span> init --project</div>
+                        <div class="code-line"><span class="code-purple">studio</span> = "Origin Spark Labs";</div>
                         <br>
-
-                        <div class="code-line">
-                            <span class="code-blue">const</span>
-                            mission = {
-                        </div>
-
-                        <div class="code-line">
-                            &nbsp;&nbsp;build:
-                            <span class="code-green">"useful"</span>,
-                        </div>
-
-                        <div class="code-line">
-                            &nbsp;&nbsp;design:
-                            <span class="code-green">"clean"</span>,
-                        </div>
-
-                        <div class="code-line">
-                            &nbsp;&nbsp;experience:
-                            <span class="code-green">"fast"</span>
-                        </div>
-
-                        <div class="code-line">
-                            };
-                        </div>
-
+                        <div class="code-line"><span class="code-blue">const</span> mission = {</div>
+                        <div class="code-line">&nbsp;&nbsp;build: <span class="code-green">"useful"</span>,</div>
+                        <div class="code-line">&nbsp;&nbsp;design: <span class="code-green">"clean"</span>,</div>
+                        <div class="code-line">&nbsp;&nbsp;experience: <span class="code-green">"fast"</span></div>
+                        <div class="code-line">};</div>
                         <br>
-
-                        <div class="code-line">
-                            <span class="code-muted">// deployment ready</span>
-                        </div>
-
-                        <div class="code-line">
-                            <span class="code-green">✓</span>
-                            systems initialized
-                        </div>
-
-                        <div class="code-line">
-                            <span class="code-green">✓</span>
-                            interface optimized
-                        </div>
-
-                        <div class="code-line">
-                            <span class="code-green">✓</span>
-                            product workflow ready
-                        </div>
-
+                        <div class="code-line"><span class="code-muted">// deployment ready</span></div>
+                        <div class="code-line"><span class="code-green">✓</span> systems initialized</div>
+                        <div class="code-line"><span class="code-green">✓</span> interface optimized</div>
                         <br>
-
                         <span class="cursor"></span>
-
                     </div>
                 </div>
-
             </div>
 
-            <!-- Stats -->
-
+            <!-- STATS -->
             <div class="stats">
-
-                <div class="stat">
-                    <strong>WEB</strong>
-                    <span>Modern Web Development</span>
-                </div>
-
-                <div class="stat">
-                    <strong>APP</strong>
-                    <span>Cross-Platform Applications</span>
-                </div>
-
-                <div class="stat">
-                    <strong>AI</strong>
-                    <span>AI & Automation Systems</span>
-                </div>
-
-                <div class="stat">
-                    <strong>UI</strong>
-                    <span>Product Experience Design</span>
-                </div>
-
+                <div class="stat"><strong>WEB</strong><span>Modern Web Development</span></div>
+                <div class="stat"><strong>APP</strong><span>Cross-Platform Applications</span></div>
+                <div class="stat"><strong>AI</strong><span>AI & Automation Systems</span></div>
+                <div class="stat"><strong>UI</strong><span>Product Experience Design</span></div>
             </div>
 
-            <div class="section-head">
+            <!-- PLAYGROUND -->
+            <div class="playground-box">
+                <div class="playground-top">
+                    <div>
+                        <div class="eyebrow" style="margin-bottom:4px;">Interactive Demo</div>
+                        <h3>Live UI Theme Switcher</h3>
+                    </div>
+                    <div class="playground-actions">
+                        <button class="playground-btn active" onclick="setPlaygroundTheme('cyber', this)">Cyber Cyan</button>
+                        <button class="playground-btn" onclick="setPlaygroundTheme('emerald', this)">Emerald AI</button>
+                        <button class="playground-btn" onclick="setPlaygroundTheme('matrix', this)">Matrix Core</button>
+                    </div>
+                </div>
+                <div class="playground-canvas" id="playground-canvas">
+                    <div class="playground-preview-text" id="playground-text" style="color: var(--blue);">
+                        // ORIGIN SPARK LABS ACTIVE ENGINE
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-head" style="margin-top: 60px;">
                 <div class="eyebrow">What We Build</div>
-
-                <h2>
-                    Technology with a
-                    <span class="gradient-text">purpose.</span>
-                </h2>
-
-                <p>
-                    We focus on practical digital products that combine
-                    strong engineering, clean interfaces, and thoughtful
-                    user experiences.
-                </p>
+                <h2>Technology with a <span class="gradient-text">purpose.</span></h2>
+                <p>We focus on practical digital products that combine strong engineering, clean interfaces, and thoughtful user experiences.</p>
             </div>
 
             <div class="grid">
-
                 <article class="card">
                     <div class="card-icon">01</div>
-
                     <h3>Web Engineering</h3>
-
-                    <p>
-                        Responsive websites and web applications built with
-                        modern frontend technologies and performance in mind.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
+                    <p>Responsive websites and web applications built with modern frontend technologies and performance in mind.</p>
+                    <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div>
                 </article>
-
                 <article class="card">
                     <div class="card-icon">02</div>
-
                     <h3>Mobile Products</h3>
-
-                    <p>
-                        Cross-platform mobile experiences designed for
-                        smooth interaction and scalable product development.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
-                    </div>
+                    <p>Cross-platform mobile experiences designed for smooth interaction and scalable product development.</p>
+                    <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
                 </article>
-
                 <article class="card">
                     <div class="card-icon">03</div>
-
                     <h3>AI & Automation</h3>
-
-                    <p>
-                        Intelligent workflows, API integrations and
-                        automation systems that help simplify repetitive
-                        digital processes.
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">AI APIs</span>
-                        <span class="tag">Automation</span>
-                    </div>
+                    <p>Intelligent workflows, API integrations and automation systems that help simplify repetitive digital processes.</p>
+                    <div class="tags"><span class="tag">AI APIs</span><span class="tag">Automation</span></div>
                 </article>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             SERVICES
-        ========================== -->
-
+        <!-- SERVICES (FEATURE 3: PROJECT SCOPE ESTIMATOR ADDED HERE) -->
         <section class="page" id="page-services">
-
             <div class="section-head">
+                <div class="eyebrow">Capabilities & Estimator</div>
+                <h2>Services built around <span class="gradient-text">your product.</span></h2>
+                <p>Use our interactive scope estimator below to calculate your estimated timeline and requirements before starting a brief.</p>
+            </div>
 
-                <div class="eyebrow">
-                    Capabilities
+            <!-- FEATURE 3: SCOPE & TIMELINE ESTIMATOR WIDGET -->
+            <div class="estimator-box">
+                <div class="eyebrow" style="margin-bottom:6px;">Interactive Tool</div>
+                <h3 style="font-family: Orbitron, sans-serif; font-size: 1.1rem; margin-bottom: 5px;">Project Scope Estimator</h3>
+                <p style="color: var(--muted); font-size: .82rem;">Select your parameters to preview a suggested development scope.</p>
+
+                <div class="estimator-grid">
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div class="estimator-group">
+                            <label>1. Service Type</label>
+                            <div class="estimator-options" id="est-type">
+                                <button class="opt-btn active" onclick="setEst('type', 'Web App', this)">Web Application</button>
+                                <button class="opt-btn" onclick="setEst('type', 'Mobile App', this)">Mobile App</button>
+                                <button class="opt-btn" onclick="setEst('type', 'AI Integration', this)">AI Integration</button>
+                                <button class="opt-btn" onclick="setEst('type', 'Automation', this)">Workflow System</button>
+                            </div>
+                        </div>
+
+                        <div class="estimator-group">
+                            <label>2. Project Scale</label>
+                            <div class="estimator-options" id="est-scale">
+                                <button class="opt-btn active" onclick="setEst('scale', 'MVP / Prototype', this)">MVP Prototype</button>
+                                <button class="opt-btn" onclick="setEst('scale', 'Full Product', this)">Full Product</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="estimator-output">
+                        <div>
+                            <div class="eyebrow" style="margin-bottom: 12px;">Suggested Scope Overview</div>
+                            <div class="output-row">
+                               <span>Target Service:</span>
+                               <span id="out-type">Web Application</span>
+                            </div>
+                            <div class="output-row">
+                               <span>Complexity Scale:</span>
+                               <span id="out-scale">MVP Prototype</span>
+                            </div>
+                            <div class="output-row">
+                               <span>Estimated Timeline:</span>
+                               <span id="out-time" style="color: var(--green);">1 - 2 Weeks</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%; margin-top: 15px;" onclick="useEstimatorBrief()">Proceed with this Scope →</button>
+                    </div>
                 </div>
-
-                <h2>
-                    Services built around
-                    <span class="gradient-text">your product.</span>
-                </h2>
-
-                <p>
-                    From first concept to functional digital experience,
-                    our services are structured around creating useful,
-                    scalable products.
-                </p>
-
             </div>
 
-            <div class="grid">
-
+            <div class="grid" style="margin-top: 40px;">
                 <article class="card service-card">
-
                     <div class="service-number">01 / WEB</div>
-
                     <h3>Web Development</h3>
-
-                    <p>
-                        Professional websites, landing pages, dashboards,
-                        portfolios and custom web applications built for
-                        responsive performance.
-                    </p>
-
-                    <div class="service-price">
-                        CUSTOM PROJECT
-                    </div>
-
-                    <div class="tags">
-                        <span class="tag">Responsive</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">UI Systems</span>
-                    </div>
-
+                    <p>Professional websites, landing pages, dashboards, portfolios and custom web applications built for responsive performance.</p>
+                    <div class="service-price">CUSTOM PROJECT</div>
+                    <div class="tags"><span class="tag">Responsive</span><span class="tag">JavaScript</span></div>
                 </article>
-
                 <article class="card service-card">
-
                     <div class="service-number">02 / MOBILE</div>
-
                     <h3>Mobile Development</h3>
-
-                    <p>
-                        Cross-platform application experiences with
-                        clean interfaces and scalable architecture.
-                    </p>
-
-                    <div class="service-price">
-                        CUSTOM PROJECT
-                    </div>
-
-                    <div class="tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
-                        <span class="tag">Mobile UI</span>
-                    </div>
-
+                    <p>Cross-platform application experiences with clean interfaces and scalable architecture.</p>
+                    <div class="service-price">CUSTOM PROJECT</div>
+                    <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
                 </article>
-
                 <article class="card service-card">
-
                     <div class="service-number">03 / AI</div>
-
                     <h3>AI Integration</h3>
-
-                    <p>
-                        AI-powered features, intelligent interfaces and
-                        API-based workflows integrated into digital products.
-                    </p>
-
-                    <div class="service-price">
-                        CUSTOM PROJECT
-                    </div>
-
-                    <div class="tags">
-                        <span class="tag">AI APIs</span>
-                        <span class="tag">LLM Workflows</span>
-                    </div>
-
+                    <p>AI-powered features, intelligent interfaces and API-based workflows integrated into digital products.</p>
+                    <div class="service-price">CUSTOM PROJECT</div>
+                    <div class="tags"><span class="tag">AI APIs</span><span class="tag">LLM Workflows</span></div>
                 </article>
-
-                <article class="card service-card">
-
-                    <div class="service-number">04 / AUTOMATION</div>
-
-                    <h3>Automation Systems</h3>
-
-                    <p>
-                        Digital workflows that connect services and reduce
-                        repetitive manual processes.
-                    </p>
-
-                    <div class="service-price">
-                        CUSTOM PROJECT
-                    </div>
-
-                    <div class="tags">
-                        <span class="tag">APIs</span>
-                        <span class="tag">Workflows</span>
-                    </div>
-
-                </article>
-
-                <article class="card service-card">
-
-                    <div class="service-number">05 / UI</div>
-
-                    <h3>Interface Development</h3>
-
-                    <p>
-                        Clean, responsive interfaces with attention to
-                        usability, hierarchy, accessibility and interaction.
-                    </p>
-
-                    <div class="service-price">
-                        CUSTOM PROJECT
-                    </div>
-
-                    <div class="tags">
-                        <span class="tag">UX</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">Interaction</span>
-                    </div>
-
-                </article>
-
-                <article class="card service-card">
-
-                    <div class="service-number">06 / DIGITAL</div>
-
-                    <h3>Digital Product Builds</h3>
-
-                    <p>
-                        Turn an idea into a functional prototype or
-                        production-ready digital experience.
-                    </p>
-
-                    <div class="service-price">
-                        PROJECT BASED
-                    </div>
-
-                    <div class="tags">
-                        <span class="tag">Prototype</span>
-                        <span class="tag">MVP</span>
-                    </div>
-
-                </article>
-
             </div>
-
             <div style="margin-top:35px;">
-                <button class="btn btn-primary"
-                        onclick="showPage('contact')">
-                    Discuss Your Project →
-                </button>
+                <button class="btn btn-primary" onclick="showPage('contact')">Discuss Your Project →</button>
             </div>
-
         </section>
 
-
-        <!-- =========================
-             PROJECTS
-        ========================== -->
-
+        <!-- PROJECTS -->
         <section class="page" id="page-projects">
-
             <div class="section-head">
-
-                <div class="eyebrow">
-                    Selected Work
-                </div>
-
-                <h2>
-                    Projects & digital
-                    <span class="gradient-text">experiments.</span>
-                </h2>
-
-                <p>
-                    A selection of products, interfaces and development
-                    experiments from Origin Spark Labs.
-                </p>
-
+                <div class="eyebrow">Selected Work</div>
+                <h2>Projects & digital <span class="gradient-text">experiments.</span></h2>
+                <p>A selection of products, interfaces and development experiments from Origin Spark Labs.</p>
             </div>
-
             <div class="grid">
-
                 <article class="card project-card">
-
-                    <img
-                        class="project-image"
-                        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&auto=format&fit=crop&q=80"
-                        alt="Code editor representing web development"
-                        loading="lazy">
-
+                    <img class="project-image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&auto=format&fit=crop&q=80" alt="Code editor" loading="lazy">
                     <div class="project-content">
-
-                        <div class="project-label">
-                            WEB / PORTFOLIO
-                        </div>
-
+                        <div class="project-label">WEB / PORTFOLIO</div>
                         <h3>Origin Spark Labs</h3>
-
-                        <p>
-                            The studio's digital headquarters focused on
-                            presenting its capabilities, projects and
-                            development workflow.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-
-                        <button class="project-link"
-                                onclick="showPage('contact')">
-                            Build something similar →
-                        </button>
-
+                        <p>The studio's digital headquarters focused on presenting its capabilities, projects and development workflow.</p>
+                        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+                        <button class="project-link" onclick="showPage('contact')">Build something similar →</button>
                     </div>
                 </article>
-
-
                 <article class="card project-card">
-
-                    <img
-                        class="project-image"
-                        src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&q=80"
-                        alt="Mobile application interface"
-                        loading="lazy">
-
+                    <img class="project-image" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&q=80" alt="Mobile app" loading="lazy">
                     <div class="project-content">
-
-                        <div class="project-label">
-                            MOBILE / CONCEPT
-                        </div>
-
+                        <div class="project-label">MOBILE / CONCEPT</div>
                         <h3>Mobile Product Concept</h3>
-
-                        <p>
-                            A cross-platform application concept focused
-                            on clean navigation, useful workflows and
-                            efficient interaction.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Dart</span>
-                        </div>
-
-                        <button class="project-link"
-                                onclick="showPage('contact')">
-                            Discuss a mobile idea →
-                        </button>
-
+                        <p>A cross-platform application concept focused on clean navigation, useful workflows and efficient interaction.</p>
+                        <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
+                        <button class="project-link" onclick="showPage('contact')">Discuss a mobile idea →</button>
                     </div>
                 </article>
-
-
                 <article class="card project-card">
-
-                    <img
-                        class="project-image"
-                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=80"
-                        alt="Analytics dashboard representing automation and data"
-                        loading="lazy">
-
+                    <img class="project-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=80" alt="Dashboard" loading="lazy">
                     <div class="project-content">
-
-                        <div class="project-label">
-                            PRODUCTIVITY / TOOL
-                        </div>
-
+                        <div class="project-label">PRODUCTIVITY / TOOL</div>
                         <h3>Cyber Pomodoro</h3>
-
-                        <p>
-                            A developer-focused productivity tool combining
-                            focused work sessions with task management.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">LocalStorage</span>
-                            <span class="tag">UI</span>
-                        </div>
-
-                        <button class="project-link"
-                                onclick="showPage('projects')">
-                            View integrated demo ↓
-                        </button>
-
+                        <p>A developer-focused productivity tool combining focused work sessions with task management.</p>
+                        <div class="tags"><span class="tag">JavaScript</span><span class="tag">LocalStorage</span></div>
+                        <button class="project-link" onclick="showPage('projects')">View integrated demo ↓</button>
                     </div>
                 </article>
-
             </div>
-
 
             <!-- Pomodoro Demo -->
-
             <div class="pomodoro">
-
                 <div class="pomodoro-top">
-
-                    <div class="eyebrow">
-                        Interactive Demo
-                    </div>
-
+                    <div class="eyebrow">Interactive Demo</div>
                     <h3>CYBER POMODORO SPRINT</h3>
-
-                    <p>
-                        A small productivity tool built into the studio.
-                    </p>
-
+                    <p>A small productivity tool built into the studio.</p>
                 </div>
-
                 <div class="modes">
-
-                    <button class="mode-btn active"
-                            onclick="switchMode(25,'work',this)">
-                        Coding Sprint
-                    </button>
-
-                    <button class="mode-btn"
-                            onclick="switchMode(5,'break',this)">
-                        Short Break
-                    </button>
-
-                    <button class="mode-btn"
-                            onclick="switchMode(15,'longBreak',this)">
-                        Long Break
-                    </button>
-
+                    <button class="mode-btn active" onclick="switchMode(25,'work',this)">Coding Sprint</button>
+                    <button class="mode-btn" onclick="switchMode(5,'break',this)">Short Break</button>
+                    <button class="mode-btn" onclick="switchMode(15,'longBreak',this)">Long Break</button>
                 </div>
-
-                <div class="timer" id="timer">
-                    25:00
-                </div>
-
+                <div class="timer" id="timer">25:00</div>
                 <div class="timer-stats">
-
-                    <span id="sprint-count">
-                        Sprints: 0
-                    </span>
-
-                    <span>
-                        Focus Mode
-                    </span>
-
+                    <span id="sprint-count">Sprints: 0</span>
+                    <span>Focus Mode</span>
                 </div>
-
                 <div class="timer-controls">
-
-                    <button class="btn btn-primary"
-                            id="start-btn"
-                            onclick="toggleTimer()">
-                        START
-                    </button>
-
-                    <button class="btn btn-secondary"
-                            onclick="resetTimer()">
-                        RESET
-                    </button>
-
+                    <button class="btn btn-primary" id="start-btn" onclick="toggleTimer()">START</button>
+                    <button class="btn btn-secondary" onclick="resetTimer()">RESET</button>
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
+        <!-- ABOUT -->
         <section class="page" id="page-about">
-
             <div class="section-head">
-
-                <div class="eyebrow">
-                    About the Studio
-                </div>
-
-                <h2>
-                    Small studio.
-                    <span class="gradient-text">Big ideas.</span>
-                </h2>
-
-                <p>
-                    Origin Spark Labs is an independent digital studio
-                    focused on building useful software experiences and
-                    exploring new ways technology can solve everyday
-                    problems.
-                </p>
-
+                <div class="eyebrow">About the Studio</div>
+                <h2>Small studio. <span class="gradient-text">Big ideas.</span></h2>
+                <p>Origin Spark Labs is an independent digital studio focused on building useful software experiences and exploring new ways technology can solve everyday problems.</p>
             </div>
 
             <div class="about-layout">
-
                 <div class="about-panel">
-
                     <h3>// Our Approach</h3>
-
-                    <p>
-                        We believe good software should be understandable,
-                        responsive and useful. Our process combines product
-                        thinking, interface design and practical engineering
-                        to move ideas from concept toward working products.
-                    </p>
-
+                    <p>We believe good software should be understandable, responsive and useful. Our process combines product thinking, interface design and practical engineering to move ideas from concept toward working products.</p>
                     <div class="principles">
-
-                        <div class="principle">
-                            Clear product thinking
-                        </div>
-
-                        <div class="principle">
-                            Responsive user experiences
-                        </div>
-
-                        <div class="principle">
-                            Maintainable code
-                        </div>
-
-                        <div class="principle">
-                            Performance-conscious development
-                        </div>
-
+                        <div class="principle">Clear product thinking</div>
+                        <div class="principle">Responsive user experiences</div>
+                        <div class="principle">Maintainable code</div>
+                        <div class="principle">Performance-conscious development</div>
                     </div>
-
                 </div>
-
-
                 <div class="about-panel">
-
                     <h3>// Technology</h3>
-
-                    <p>
-                        Our current development toolkit spans frontend web
-                        development, cross-platform mobile development,
-                        APIs, automation and AI-powered workflows.
-                    </p>
-
+                    <p>Our current development toolkit spans frontend web development, cross-platform mobile development, APIs, automation and AI-powered workflows.</p>
                     <div class="tags">
-
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Dart</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">APIs</span>
-                        <span class="tag">AI</span>
-
+                        <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
+                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Git</span><span class="tag">AI</span>
                     </div>
-
                 </div>
+            </div>
 
+            <!-- TESTIMONIALS -->
+            <div style="margin-top: 22px;" class="section-head">
+                <div class="eyebrow">Social Proof</div>
+                <h2>Feedback & <span class="gradient-text">Collaboration.</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Origin Spark Labs brought exceptional structural clarity to our frontend interface. Clean design work and precise execution."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <strong>Project Lead</strong>
+                            <span>Web Architecture Partner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Fast turnaround time and great attention to detail on cross-platform workflows. Highly reliable engineering approach."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AK</div>
+                        <div class="author-info">
+                            <strong>Tech Collaborator</strong>
+                            <span>Mobile Product Sprint</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div style="margin-top:22px;" class="about-panel">
-
                 <h3>// Let's Build Something Useful</h3>
-
-                <p>
-                    Have a website, application, automation idea or digital
-                    product you want to explore? Send us a project brief and
-                    we'll use the information to understand what you're
-                    trying to build.
-                </p>
-
+                <p>Have a website, application, automation idea or digital product you want to explore? Send us a project brief and we'll use the information to understand what you're trying to build.</p>
                 <div style="margin-top:22px;">
-                    <button class="btn btn-primary"
-                            onclick="showPage('contact')">
-                        Start a Project →
-                    </button>
+                    <button class="btn btn-primary" onclick="showPage('contact')">Start a Project →</button>
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
+        <!-- CONTACT -->
         <section class="page" id="page-contact">
-
             <div class="section-head">
-
-                <div class="eyebrow">
-                    Project Intake
-                </div>
-
-                <h2>
-                    Tell us what you want
-                    <span class="gradient-text">to build.</span>
-                </h2>
-
-                <p>
-                    Complete the short project brief below. Your contact
-                    details are not displayed publicly on this website.
-                </p>
-
+                <div class="eyebrow">Project Intake</div>
+                <h2>Tell us what you want <span class="gradient-text">to build.</span></h2>
+                <p>Complete the short project brief below. Your contact details are not displayed publicly on this website.</p>
             </div>
 
             <div class="contact-layout">
-
                 <div class="contact-info">
-
-                    <div class="eyebrow">
-                        Secure Project Brief
-                    </div>
-
-                    <h3>
-                        Start with the idea.
-                    </h3>
-
-                    <p>
-                        Tell us what you're trying to create, what problem
-                        it should solve, and how you would like the final
-                        product to work.
-                    </p>
-
+                    <div class="eyebrow">Secure Project Brief</div>
+                    <h3>Start with the idea.</h3>
+                    <p>Tell us what you're trying to create, what problem it should solve, and how you would like the final product to work.</p>
                     <div class="private-contact">
-
                         <strong>CONTACT DETAILS PROTECTED</strong>
-
-                        Your direct studio contact information is kept
-                        behind the contact workflow rather than displayed
-                        as plain text on the portfolio.
-
+                        Your direct studio contact information is kept behind the contact workflow rather than displayed as plain text on the portfolio.
                     </div>
-
                     <div class="principles">
-
-                        <div class="principle">
-                            Choose your country
-                        </div>
-
-                        <div class="principle">
-                            Select the service you need
-                        </div>
-
-                        <div class="principle">
-                            Describe your project
-                        </div>
-
-                        <div class="principle">
-                            Choose your preferred contact channel
-                        </div>
-
+                        <div class="principle">Choose your country</div>
+                        <div class="principle">Select the service you need</div>
+                        <div class="principle">Describe your project</div>
+                        <div class="principle">Choose your preferred contact channel</div>
                     </div>
-
                 </div>
 
-
-                <form class="contact-form"
-                      id="project-form">
-
+                <form class="contact-form" id="project-form">
                     <div class="form-grid">
-
                         <div class="field">
-
-                            <label for="name">
-                                Your Name
-                            </label>
-
-                            <input
-                                class="input"
-                                id="name"
-                                type="text"
-                                maxlength="60"
-                                required
-                                autocomplete="name"
-                                placeholder="Your name">
-
+                            <label for="name">Your Name</label>
+                            <input class="input" id="name" type="text" maxlength="60" required autocomplete="name" placeholder="Your name">
                         </div>
-
-
                         <div class="field">
-
-                            <label for="country">
-                                Country
-                            </label>
-
-                            <select class="select"
-                                    id="country"
-                                    required>
-
-                                <option value="">
-                                    Select country
-                                </option>
-
+                            <label for="country">Country</label>
+                            <select class="select" id="country" required>
+                                <option value="">Select country</option>
                                 <option>Nigeria</option>
                                 <option>Ghana</option>
                                 <option>Qatar</option>
@@ -2012,28 +1260,14 @@
                                 <option>United Kingdom</option>
                                 <option>United States</option>
                                 <option>Canada</option>
-                                <option>india</option>
+                                <option>India</option>
                                 <option>Other</option>
-
                             </select>
-
                         </div>
-
-
                         <div class="field">
-
-                            <label for="service">
-                                What do you need?
-                            </label>
-
-                            <select class="select"
-                                    id="service"
-                                    required>
-
-                                <option value="">
-                                    Select service
-                                </option>
-
+                            <label for="service">What do you need?</label>
+                            <select class="select" id="service" required>
+                                <option value="">Select service</option>
                                 <option>Website</option>
                                 <option>Web Application</option>
                                 <option>Mobile Application</option>
@@ -2041,231 +1275,225 @@
                                 <option>Automation</option>
                                 <option>UI / Frontend Development</option>
                                 <option>Other</option>
-
                             </select>
-
                         </div>
-
-
                         <div class="field">
-
-                            <label for="budget">
-                                Project Stage
-                            </label>
-
-                            <select class="select"
-                                    id="budget">
-
+                            <label for="budget">Project Stage</label>
+                            <select class="select" id="budget">
                                 <option>Just an idea</option>
                                 <option>Planning</option>
                                 <option>Prototype needed</option>
                                 <option>Ready to build</option>
                                 <option>Existing product</option>
-
                             </select>
-
                         </div>
-
-
                         <div class="field full">
-
-                            <label for="project">
-                                Project Brief
-                            </label>
-
-                            <textarea
-                                class="textarea"
-                                id="project"
-                                maxlength="1500"
-                                required
-                                placeholder="Tell us what you want to build, who it is for, and what you want it to accomplish..."></textarea>
-
+                            <label for="project">Project Brief</label>
+                            <textarea class="textarea" id="project" maxlength="1500" required placeholder="Tell us what you want to build, who it is for, and what you want it to accomplish..."></textarea>
                         </div>
-
-
                         <div class="field full">
-
-                            <label for="channel">
-                                Preferred Contact Channel
-                            </label>
-
-                            <select class="select"
-                                    id="channel"
-                                    required>
-
-                                <option value="">
-                                    Choose contact channel
-                                </option>
-
-                                <option value="WhatsApp">
-                                    WhatsApp
-                                </option>
-
-                                <option value="Email">
-                                    Email
-                                </option>
-
+                            <label for="channel">Preferred Contact Channel</label>
+                            <select class="select" id="channel" required>
+                                <option value="">Choose contact channel</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Email">Email</option>
                             </select>
-
                         </div>
-
                     </div>
-
-                    <button class="btn btn-primary"
-                            type="submit"
-                            style="width:100%;">
-                        Send Project Brief →
-                    </button>
-
-                    <p class="form-note">
-                        Your information is used only to prepare the
-                        project enquiry message.
-                    </p>
-
+                    <button class="btn btn-primary" type="submit" style="width:100%;">Send Project Brief →</button>
+                    <p class="form-note">Your information is used only to prepare the project enquiry message.</p>
                 </form>
-
             </div>
-
         </section>
-
     </main>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
+    <!-- FOOTER -->
     <footer>
-
         <div class="container footer-inner">
-
             <div>
-                <div class="footer-brand">
-                    ORIGIN SPARK LABS
-                </div>
-
-                <div class="footer-copy">
-                    © 2026 Origin Spark Labs. All rights reserved.
-                </div>
+                <div class="footer-brand">ORIGIN SPARK LABS</div>
+                <div class="footer-copy">© 2026 Origin Spark Labs. All rights reserved.</div>
             </div>
-
             <div class="footer-nav">
-
-                <button onclick="showPage('home')">
-                    Home
-                </button>
-
-                <button onclick="showPage('services')">
-                    Services
-                </button>
-
-                <button onclick="showPage('projects')">
-                    Projects
-                </button>
-
-                <button onclick="showPage('contact')">
-                    Contact
-                </button>
-
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('services')">Services</button>
+                <button onclick="showPage('projects')">Projects</button>
+                <button onclick="showPage('contact')">Contact</button>
             </div>
-
         </div>
-
     </footer>
-
 
     <!-- Toast -->
     <div id="toast-container"></div>
 
-
     <script>
+        /* ==========================================
+           WEB AUDIO API SFX ENGINE
+        ========================================== */
+        let sfxEnabled = false;
+        const sfxToggleBtn = document.getElementById('sfx-toggle');
+
+        function toggleSFX() {
+            sfxEnabled = !sfxEnabled;
+            sfxToggleBtn.textContent = sfxEnabled ? "SFX: ON" : "SFX: OFF";
+            sfxToggleBtn.style.color = sfxEnabled ? "var(--green)" : "var(--muted)";
+            if (sfxEnabled) playBeep(600, 0.05);
+        }
+
+        function playBeep(freq = 440, duration = 0.04) {
+            if (!sfxEnabled) return;
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                
+                gain.gain.setValueAtTime(0.03, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                playBeep(520, 0.03);
+            }
+        });
+
 
         /* ==========================================
-           PAGE NAVIGATION
+           FEATURE 2: LIVE CLOCK & STATUS ENGINE
         ========================================== */
+        function updateLiveClock() {
+            const now = new Date();
+            const hours = String(now.getUTCHours()).padStart(2, '0');
+            const mins = String(now.getUTCMinutes()).padStart(2, '0');
+            const secs = String(now.getUTCSeconds()).padStart(2, '0');
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) {
+                clockEl.textContent = `${hours}:${mins}:${secs} UTC`;
+            }
+        }
+        setInterval(updateLiveClock, 1000);
+        updateLiveClock();
 
+
+        /* ==========================================
+           FEATURE 3: PROJECT SCOPE ESTIMATOR LOGIC
+        ========================================== */
+        let estData = { type: "Web App", scale: "MVP / Prototype" };
+
+        function setEst(category, value, btn) {
+            const group = document.getElementById(`est-${category}`);
+            group.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            estData[category] = value;
+            updateEstimatorOutput();
+        }
+
+        function updateEstimatorOutput() {
+            document.getElementById('out-type').textContent = estData.type;
+            document.getElementById('out-scale').textContent = estData.scale;
+            
+            let timeText = "1 - 2 Weeks";
+            if (estData.scale === "Full Product") {
+                timeText = "3 - 5 Weeks";
+            }
+            if (estData.type === "AI Integration" || estData.type === "Workflow System") {
+                timeText = estData.scale === "Full Product" ? "4 - 6 Weeks" : "2 - 3 Weeks";
+            }
+            document.getElementById('out-time').textContent = timeText;
+        }
+
+        function useEstimatorBrief() {
+            showPage('contact');
+            const serviceSelect = document.getElementById('service');
+            if (estData.type.includes("Web")) serviceSelect.value = "Web Application";
+            else if (estData.type.includes("Mobile")) serviceSelect.value = "Mobile Application";
+            else if (estData.type.includes("AI")) serviceSelect.value = "AI Integration";
+            else serviceSelect.value = "Automation";
+
+            document.getElementById('budget').value = estData.scale === "MVP Prototype" ? "Prototype needed" : "Ready to build";
+            document.getElementById('project').value = `Project Scope Estimate Generated:\nType: ${estData.type}\nScale: ${estData.scale}\n\n[Please add specific project goals or feature details here...]`;
+            showToast("Scope loaded into brief!");
+        }
+
+
+        /* ==========================================
+           LIVE CODE PLAYGROUND LOGIC
+        ========================================== */
+        function setPlaygroundTheme(theme, btn) {
+            document.querySelectorAll('.playground-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const canvas = document.getElementById('playground-canvas');
+            const text = document.getElementById('playground-text');
+
+            if (theme === 'cyber') {
+                canvas.style.borderColor = 'var(--blue)';
+                canvas.style.background = '#04060b';
+                text.style.color = 'var(--blue)';
+                text.textContent = '// ORIGIN SPARK LABS: CYBER ENGINE ACTIVE';
+            } else if (theme === 'emerald') {
+                canvas.style.borderColor = 'var(--green)';
+                canvas.style.background = '#040a08';
+                text.style.color = 'var(--green)';
+                text.textContent = '// SYSTEM: SECURE AUTOMATION RUNNING';
+            } else if (theme === 'matrix') {
+                canvas.style.borderColor = 'var(--purple)';
+                canvas.style.background = '#07050d';
+                text.style.color = 'var(--purple)';
+                text.textContent = '// STUDIO CORE: FLUTTER & WEB SYNC';
+            }
+        }
+
+
+        /* ==========================================
+           PAGE NAVIGATION & ROUTING
+        ========================================== */
         const pages = document.querySelectorAll(".page");
         const navButtons = document.querySelectorAll(".nav-btn");
         const navLinks = document.getElementById("nav-links");
         const menuBtn = document.getElementById("menu-btn");
 
         function showPage(pageName) {
-
-            pages.forEach(page => {
-                page.classList.remove("active");
-            });
-
+            pages.forEach(page => page.classList.remove("active"));
             const target = document.getElementById(`page-${pageName}`);
-
-            if (target) {
-                target.classList.add("active");
-            }
+            if (target) target.classList.add("active");
 
             navButtons.forEach(button => {
-
-                button.classList.toggle(
-                    "active",
-                    button.dataset.page === pageName
-                );
-
+                button.classList.toggle("active", button.dataset.page === pageName);
             });
 
             closeMenu();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
+            window.scrollTo({ top: 0, behavior: "smooth" });
             history.replaceState(null, "", `#${pageName}`);
         }
 
-
-        /* ==========================================
-           MOBILE MENU
-        ========================================== */
-
         function toggleMenu() {
-
             const isOpen = navLinks.classList.toggle("open");
-
-            menuBtn.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-
+            menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
             menuBtn.textContent = isOpen ? "×" : "☰";
         }
 
         function closeMenu() {
-
             navLinks.classList.remove("open");
-
-            menuBtn.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
+            menuBtn.setAttribute("aria-expanded", "false");
             menuBtn.textContent = "☰";
         }
 
-
-        /* ==========================================
-           HASH ROUTING
-        ========================================== */
-
         function loadPageFromHash() {
-
             const hash = window.location.hash.replace("#", "");
-
-            const allowedPages = [
-                "home",
-                "services",
-                "projects",
-                "about",
-                "contact"
-            ];
-
+            const allowedPages = ["home", "services", "projects", "about", "contact"];
             if (allowedPages.includes(hash)) {
                 showPage(hash);
             } else {
@@ -2275,335 +1503,130 @@
 
         window.addEventListener("hashchange", loadPageFromHash);
 
-
         /* ==========================================
            TOAST SYSTEM
         ========================================== */
-
         function showToast(message, type = "success") {
-
-            const container =
-                document.getElementById("toast-container");
-
-            const toast =
-                document.createElement("div");
-
-            toast.className =
-                `toast ${type === "error" ? "error" : ""}`;
-
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = `toast ${type === "error" ? "error" : ""}`;
             toast.textContent = message;
-
             container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.remove();
-            }, 3500);
+            setTimeout(() => { toast.remove(); }, 3500);
         }
 
-
         /* ==========================================
-           POMODORO
+           POMODORO SPRINT ENGINE
         ========================================== */
-
         let timerId = null;
         let isRunning = false;
-
         let currentMode = "work";
         let currentModeTime = 25 * 60;
         let timeLeft = currentModeTime;
+        let completedSprints = parseInt(localStorage.getItem("origin_total_sprints"), 10) || 0;
 
-        let completedSprints =
-            parseInt(
-                localStorage.getItem("origin_total_sprints"),
-                10
-            ) || 0;
-
-        const timerDisplay =
-            document.getElementById("timer");
-
-        const startButton =
-            document.getElementById("start-btn");
-
-        const sprintCount =
-            document.getElementById("sprint-count");
-
+        const timerDisplay = document.getElementById("timer");
+        const startButton = document.getElementById("start-btn");
+        const sprintCount = document.getElementById("sprint-count");
 
         function updateTimerDisplay() {
-
-            const minutes =
-                Math.floor(timeLeft / 60);
-
-            const seconds =
-                timeLeft % 60;
-
-            timerDisplay.textContent =
-                `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-
-            sprintCount.textContent =
-                `Sprints: ${completedSprints}`;
-
-            document.title =
-                `(${timerDisplay.textContent}) Origin Spark Labs`;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+            sprintCount.textContent = `Sprints: ${completedSprints}`;
+            document.title = `(${timerDisplay.textContent}) Origin Spark Labs`;
         }
 
-
         function switchMode(minutes, mode, button) {
-
             clearInterval(timerId);
-
             isRunning = false;
-
             currentMode = mode;
             currentModeTime = minutes * 60;
             timeLeft = currentModeTime;
-
             startButton.textContent = "START";
+            startButton.className = "btn btn-primary";
 
-            startButton.className =
-                "btn btn-primary";
-
-            document
-                .querySelectorAll(".mode-btn")
-                .forEach(btn => {
-                    btn.classList.remove("active");
-                });
-
-            if (button) {
-                button.classList.add("active");
-            }
-
+            document.querySelectorAll(".mode-btn").forEach(btn => btn.classList.remove("active"));
+            if (button) button.classList.add("active");
             updateTimerDisplay();
         }
 
-
         function toggleTimer() {
-
             if (isRunning) {
-
                 clearInterval(timerId);
-
                 isRunning = false;
-
                 startButton.textContent = "RESUME";
-
                 return;
             }
-
             isRunning = true;
-
             startButton.textContent = "PAUSE";
-
             timerId = setInterval(() => {
-
                 if (timeLeft > 0) {
-
                     timeLeft--;
-
                     updateTimerDisplay();
-
                     return;
                 }
-
                 completeTimer();
-
             }, 1000);
         }
 
-
         function completeTimer() {
-
             clearInterval(timerId);
-
             isRunning = false;
-
             startButton.textContent = "START";
-
             if (currentMode === "work") {
-
                 completedSprints++;
-
-                localStorage.setItem(
-                    "origin_total_sprints",
-                    String(completedSprints)
-                );
-
+                localStorage.setItem("origin_total_sprints", String(completedSprints));
                 updateTimerDisplay();
-
-                showToast(
-                    "Sprint complete. Time for a break."
-                );
-
+                showToast("Sprint complete. Time for a break.");
             } else {
-
-                showToast(
-                    "Break complete. Ready for another sprint."
-                );
+                showToast("Break complete. Ready for another sprint.");
             }
         }
 
-
         function resetTimer() {
-
             clearInterval(timerId);
-
             isRunning = false;
-
             timeLeft = currentModeTime;
-
             startButton.textContent = "START";
-
             updateTimerDisplay();
         }
 
-
         /* ==========================================
-           CONTACT FORM
+           CONTACT FORM SUBMISSION
         ========================================== */
-
-        const projectForm =
-            document.getElementById("project-form");
-
+        const projectForm = document.getElementById("project-form");
         projectForm.addEventListener("submit", function(event) {
-
             event.preventDefault();
-
-            const name =
-                document.getElementById("name")
-                    .value.trim();
-
-            const country =
-                document.getElementById("country")
-                    .value;
-
-            const service =
-                document.getElementById("service")
-                    .value;
-
-            const stage =
-                document.getElementById("budget")
-                    .value;
-
-            const project =
-                document.getElementById("project")
-                    .value.trim();
-
-            const channel =
-                document.getElementById("channel")
-                    .value;
-
+            const name = document.getElementById("name").value.trim();
+            const country = document.getElementById("country").value;
+            const service = document.getElementById("service").value;
+            const stage = document.getElementById("budget").value;
+            const project = document.getElementById("project").value.trim();
+            const channel = document.getElementById("channel").value;
 
             if (!name || !country || !service || !project || !channel) {
-
-                showToast(
-                    "Please complete all required fields.",
-                    "error"
-                );
-
+                showToast("Please complete all required fields.", "error");
                 return;
             }
 
-
-            const message =
-`Hello Origin Spark Labs,
-
-I would like to discuss a project.
-
-Name: ${name}
-Country: ${country}
-Service: ${service}
-Project Stage: ${stage}
-Preferred Contact: ${channel}
-
-Project Brief:
-${project}`;
-
+            const message = `Hello Origin Spark Labs,\n\nI would like to discuss a project.\n\nName: ${name}\nCountry: ${country}\nService: ${service}\nProject Stage: ${stage}\nPreferred Contact: ${channel}\n\nProject Brief:\n${project}`;
 
             if (channel === "WhatsApp") {
-
-                const whatsappNumber =
-                    "2348120829956";
-
-                const url =
-                    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-                window.open(url, "_blank");
-
+                const whatsappNumber = "2348120829956";
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
             } else {
-
-                const email =
-                    "originsparklabs@gmail.com";
-
-                const subject =
-                    `Project Enquiry — ${service}`;
-
-                const url =
-                    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-
-                window.location.href = url;
+                const email = "originsparklabs@gmail.com";
+                window.location.href = `mailto:${email}?subject=${encodeURIComponent(`Project Enquiry — ${service}`)}&body=${encodeURIComponent(message)}`;
             }
 
-
-            showToast(
-                "Project brief prepared successfully."
-            );
-
+            showToast("Project brief prepared successfully.");
             projectForm.reset();
         });
 
-
-        /* ==========================================
-           KEYBOARD SHORTCUTS
-        ========================================== */
-
-        document.addEventListener("keydown", event => {
-
-            const tag =
-                document.activeElement.tagName.toLowerCase();
-
-            if (
-                tag === "input" ||
-                tag === "textarea" ||
-                tag === "select"
-            ) {
-                return;
-            }
-
-            if (event.key === "Escape") {
-                closeMenu();
-            }
-
-            if (event.key.toLowerCase() === "1") {
-                showPage("home");
-            }
-
-            if (event.key.toLowerCase() === "2") {
-                showPage("services");
-            }
-
-            if (event.key.toLowerCase() === "3") {
-                showPage("projects");
-            }
-
-            if (event.key.toLowerCase() === "4") {
-                showPage("about");
-            }
-
-            if (event.key.toLowerCase() === "5") {
-                showPage("contact");
-            }
-
-        });
-
-
-        /* ==========================================
-           INITIALIZE
-        ========================================== */
-
+        // INITIALIZE
         updateTimerDisplay();
-
         loadPageFromHash();
-
     </script>
-
 </body>
 </html>
